@@ -6,29 +6,19 @@ how many people would enter a floor and how many in the whole building.
  */
 package Entities;
 
-import java.util.Scanner;
+
 
 
 public class OfficeBuilding extends Building {
     private int numOffices;
     private int numPeopleByOffice;
     private int numFloor;
-    private final Scanner read = new Scanner(System.in).useDelimiter("\n");
-    public void cargar()
-    {
-        System.out.println("Please, enter the length of the building: ");
-        super.length = read.nextInt();
-        System.out.println("Please, enter the width of the building: ");
-        super.width = read.nextInt();
-        System.out.println("Please, enter the height of the building: ");
-        super.height = read.nextInt();
-        System.out.println("Please, enter the floor number: ");
-        numFloor = read.nextInt();
-        System.out.println("Please, enter the number of offices: ");
-        numFloor = read.nextInt();
-        System.out.println("Please, enter the number of people by office: ");
-        numFloor = read.nextInt();
+
+    public OfficeBuilding() {
     }
+
+    
+    
     @Override
     public void calculateSurface() {
         
@@ -39,7 +29,30 @@ public class OfficeBuilding extends Building {
     public void calculateVolume() {
         System.out.println("Volume in cm3 is: " + super.length*super.width*super.height);
     }
+
+    @Override
+    public void load() {
+     
+        System.out.println("Please, enter the length of the Office Building: ");
+        super.length = read.nextInt();
+        System.out.println("Please, enter the width : ");
+        super.width = read.nextInt();
+        System.out.println("Please, enter the height: ");
+        super.height = read.nextInt();
+        System.out.println("Please, enter the floor number: ");
+        numFloor = read.nextInt();
+        System.out.println("Please, enter the number of offices: ");
+        numOffices = read.nextInt();
+        System.out.println("Please, enter the number of people by office: ");
+        numPeopleByOffice = read.nextInt();  
+    }   
     
-    
-          
+    public void amountPeople()
+    {
+        
+        int pByfloor = numOffices * numPeopleByOffice;
+        
+        System.out.println("The amount of people by floor is: " + pByfloor );
+        System.out.println("The total amount of people in the building is: " + pByfloor*numFloor);
+    }
 }
